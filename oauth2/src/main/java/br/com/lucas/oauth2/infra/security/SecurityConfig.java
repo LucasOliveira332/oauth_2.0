@@ -21,8 +21,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.GET, "/public").permitAll()
                         .requestMatchers(HttpMethod.GET, "/private").authenticated())
-//                .oauth2Login(Customizer.withDefaults())
-//                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+                .oauth2ResourceServer(auth2 -> auth2.jwt(Customizer.withDefaults()))
                 .build();
     }
 }
